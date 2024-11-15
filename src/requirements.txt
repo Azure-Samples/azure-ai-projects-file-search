@@ -152,7 +152,7 @@ typing-extensions==4.11.0
     #   openai
     #   pydantic
     #   pydantic-core
-urllib3==2.2.1
+urllib3==2.2.2
     # via requests
 uvicorn[standard]==0.29.0
     # via quartapp (pyproject.toml)
