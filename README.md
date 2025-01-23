@@ -58,7 +58,7 @@ To achieve this, when users submit a message to the web server, the web server w
 5. Start the services with this command:
 
     ```shell
-    python -m quart --app src.quartapp run --port 50505 --reload
+    python -m uvicorn "api.main:create_app" --app-dir src --port 50505 --reload
     ```
 
 6. Click 'http://localhost:50505' in the browser to run the application.
