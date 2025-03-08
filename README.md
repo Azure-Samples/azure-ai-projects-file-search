@@ -60,6 +60,9 @@ azd env set AZURE_AI_AGENT_MODEL_NAME <MODEL_NAME>
 azd env set AZURE_AI_AGENT_MODEL_VERSION <MODEL_VERSION>
 ```
 
+In this example an agent can perform search using the context given in the search index, deployed in Azure AI Search resource (default) or in the uploaded files. The semantic index search represents so-called hybrid search i.e. it uses LLM to search for the relevant context in the provided index as well as embedding similarity search. This index is built from the `embeddings.csv` file, containing the embeddings vectors, followed by the contexts.
+To use file search instead, please set the local environment variable `USE_SEARCH_SERVICE` to `false` during the `azd up` command. In this case the Azure AI Search resource will not be deployed.
+
 #### Logging
 If you want to enable logging to a file, uncomment the following line in Dockerfile located in the src directory:
 

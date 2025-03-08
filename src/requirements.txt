@@ -6,4 +6,5 @@ aiohttp==3.11.1
 azure-ai-projects
 azure-core-tracing-opentelemetry
 azure-monitor-opentelemetry
+azure-search-documents
 opentelemetry-sdk

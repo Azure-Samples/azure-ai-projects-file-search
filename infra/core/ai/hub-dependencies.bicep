@@ -142,6 +142,8 @@ module searchService '../search/search-services.bicep' =
       location: location
       tags: tags
       name: searchServiceName
+      semanticSearch: 'free'
+      authOptions: { aadOrApiKey: { aadAuthFailureMode: 'http401WithBearerChallenge'}}
     }
   }
 

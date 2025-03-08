@@ -74,17 +74,17 @@
     "agentDeploymentCapacity": {
       "value": "${AZURE_AI_AGENT_DEPLOYMENT_CAPACITY=50}"
     },
-    "embedDeploymentName": {
-      "value": "${AZURE_AI_EMBED_DEPLOYMENT_NAME=text-embedding-ada-002}"
+    "embeddingDeploymentName": {
+      "value": "${AZURE_AI_EMBED_DEPLOYMENT_NAME=text-embedding-3-small}"
     },
     "embedModelFormat": {
       "value": "${AZURE_AI_EMBED_MODEL_FORMAT=OpenAI}"
     },
     "embedModelName": {
-      "value": "${AZURE_AI_EMBED_MODEL_NAME=text-embedding-ada-002}"
+      "value": "${AZURE_AI_EMBED_MODEL_NAME=text-embedding-3-small}"
     },
     "embedModelVersion": {
-      "value": "${AZURE_AI_EMBED_MODEL_VERSION=2}"
+      "value": "${AZURE_AI_EMBED_MODEL_VERSION=1}"
     },
     "embedDeploymentSku": {
       "value": "${AZURE_AI_EMBED_DEPLOYMENT_SKU=Standard}"
@@ -92,11 +92,17 @@
     "embedDeploymentCapacity": {
       "value": "${AZURE_AI_EMBED_DEPLOYMENT_CAPACITY=50}"
     },
+    "embeddingDeploymentDimensions": {
+      "value": "${AZURE_AI_EMBED_DIMENSIONS=100}"
+    },
     "apiAppExists": {
       "value": "${SERVICE_API_RESOURCE_EXISTS=false}"
     },
     "aiExistingProjectConnectionString": {
       "value": "${AZURE_EXISTING_AIPROJECT_CONNECTION_STRING}"
+    },
+    "aiSearchIndexName": {
+      "value": "${AZURE_AI_SEARCH_INDEX_NAME=index_sample}"
     }
   }
 }

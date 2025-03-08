@@ -19,6 +19,7 @@ from azure.ai.projects.models import (
     ThreadMessage,
     ThreadRun,
     AsyncAgentEventHandler,
+    RunStep
 )
 
 # Create a logger for this module
@@ -100,6 +101,19 @@ class MyEventHandler(AsyncAgentEventHandler[str]):
         stream_data = {'type': "stream_end"}
         return serialize_sse_event(stream_data)
 
+    async def on_run_step(self, step: RunStep) -> Optional[str]:
+        logger.info(f"Step {step['id']} status: {step['status']}")
+        step_details = step.get("step_details", {})
+        tool_calls = step_details.get("tool_calls", [])
+
+        if tool_calls:
+            logger.info("Tool calls:")
+            for call in tool_calls:
+                azure_ai_search_details = call.get("azure_ai_search", {})
+                if azure_ai_search_details:
+                    logger.info(f"azure_ai_search input: {azure_ai_search_details.get('input')}")
+                    logger.info(f"azure_ai_search output: {azure_ai_search_details.get('output')}")
+        return None
 
 @router.get("/", response_class=HTMLResponse)
 async def index(request: Request):
@@ -116,7 +130,7 @@ async def get_result(thread_id: str, agent_id: str, ai_client : AIProjectClient)
         ) as stream:
             logger.info("Successfully created stream; starting to process events")
             async for event in stream:
-                _, _, event_func_return_val = event
+                _, event_data_obj, event_func_return_val = event
                 logger.debug(f"Received event: {event}")
                 if event_func_return_val:
                     logger.info(f"Yielding event: {event_func_return_val}")
